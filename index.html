@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaurav Yadav | Tech-Driven Operations Specialist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #7c3aed;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --accent: #10b981;
+      --glass: rgba(255, 255, 255, 0.15);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    @supports (font-variation-settings: normal) {
+      body { font-family: 'Inter var', -apple-system, BlinkMacSystemFont, sans-serif; }
+    }
+    
+    /* Particle background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    /* Glass morphism effect */
+    .glass {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    }
+    
+    /* Header with animated gradient */
+    header {
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent);
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #fff, #a5b4fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    .tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .typewriter {
+      font-size: 1.2rem;
+      color: var(--accent);
+      height: 1.5em;
+      display: inline-block;
+    }
+    
+    /* Navigation - floating glass panel */
+    nav {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    nav.scrolled {
+      top: 1rem;
+      bottom: auto;
+      padding: 0.5rem 1rem;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    nav a:hover, nav a.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    nav a.download-btn {
+      background: var(--accent);
+      color: var(--dark);
+      font-weight: 600;
+    }
+    
+    nav a.download-btn:hover {
+      background: #34d399;
+      transform: translateY(-2px);
+    }
+    
+    /* Main content sections */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    section {
+      padding: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 0.5rem;
+      color: #a5b4fc;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    
+    /* Experience timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--dark);
+    }
+    
+    .date {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      font-style: italic;
+    }
+    
+    /* Skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .skill-category {
+      padding: 1.5rem;
+    }
+    
+    .skill-category h4 {
+      margin-bottom: 1rem;
+      color: #a5b4fc;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    /* Contact form */
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    button {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    button:hover {
+      background: #34d399;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    
+    button:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* Success message */
+    .success-message {
+      display: none;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .success-message.show {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Social links */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+    
+    .social-links a {
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--accent);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+    
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      .tagline { font-size: 1.2rem; }
+      
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+      
+      nav {
+        width: calc(100% - 2rem);
+        justify-content: space-between;
+      }
+      
+      nav a span.text {
+        display: none;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-group.full-width {
+        grid-column: span 1;
+      }
+    }
+    
+    /* Dark mode toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Terminal effect for code-like sections */
+    .terminal {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 1.5rem;
+      font-family: 'Fira Code', monospace;
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .terminal-header {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .terminal-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    
+    .terminal-btn.red { background: #ff5f56; }
+    .terminal-btn.yellow { background: #ffbd2e; }
+    .terminal-btn.green { background: #27c93f; }
+    
+    .terminal-content {
+      color: #50fa7b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .terminal-content .comment {
+      color: #6272a4;
+      font-style: italic;
+    }
+    
+    .terminal-content .command {
+      color: #ff79c6;
+    }
+    
+    .terminal-content .path {
+      color: #8be9fd;
+    }
+  </style>
+</head>
+<body>
+  <!-- Particle.js background -->
+  <div id="particles-js"></div>
+  
+  <!-- Theme toggle -->
+  <div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
+  
+  <!-- Header with animated gradient -->
+  <header>
+    <div class="header-content glass">
+      <img src="https://raw.githubusercontent.com/gauravyadav56788/Portfolio/main/fgff.jpeg" alt="Gaurav Yadav" class="profile-pic">
+      <h1>Gaurav Yadav</h1>
+      <p class="tagline">E-commerce & Backend Panel Specialist | Data Administration | Operations Manager</p>
+      <div class="typewriter" id="typewriter"></div>
+    </div>
+  </header>
+  
+  <!-- Floating navigation -->
+  <nav id="mainNav">
+    <a href="#about" class="active"><i class="fas fa-user"></i> <span class="text">About</span></a>
+    <a href="#experience"><i class="fas fa-briefcase"></i> <span class="text">Experience</span></a>
+    <a href="#skills"><i class="fas fa-code"></i> <span class="text">Skills</span></a>
+    <a href="#contact"><i class="fas fa-envelope"></i> <span class="text">Contact</span></a>
+    <a href="https://drive.google.com/file/d/1qa6GuhIo7EfZQl3SFq3OvN_enmXM0qGq/view?usp=drivesdk" class="download-btn" target="_blank">
+      <i class="fas fa-download"></i> <span class="text">Resume</span>
+    </a>
+  </nav>
+  
+  <!-- Main content -->
+  <main>
+    <!-- About Section -->
+    <section id="about" class="glass">
+      <h2><i class="fas fa-user"></i> About Me</h2>
+      <p>Results-driven e-commerce and backend support professional with 3.5 years of experience in order processing, data administration, and panel management across platforms like Shopify, Amazon, and Flipkart. Adept at managing complex order workflows, customer support, and backend operations to ensure seamless e-commerce functionality.</p>
+      
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="terminal-btn red"></div>
+          <div class="terminal-btn yellow"></div>
+          <div class="terminal-btn green"></div>
+        </div>
+        <div class="terminal-content">
+          <span class="path">~/operations-expert $</span> <span class="command">cat about_me.txt</span><br>
+          <br>
+          <span class="comment"># Professional Summary</span><br>
+          Results-driven Operations & Tech-Savvy Business Optimizer specializing in:<br>
+          - E-commerce automation<br>
+          - Workflow optimization<br>
+          - AI-powered solutions<br>
+          - Cross-functional coordination<br>
+          <br>
+          <span class="path">~/operations-expert $</span> <span class="command">./automate --all</span><br>
+          > Initializing efficiency protocols...<br>
+          > Reducing manual work by 50%...<br>
+          > Success! Systems optimized.
+        </div>
+      </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="glass">
+      <h2><i class="fas fa-briefcase"></i> Professional Journey</h2>
+      <p>My career path through innovative companies where I've implemented automation and operational improvements.</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Crepdogcrew – Operations & Automation Executive</h3>
+          <p class="date">Feb 2025 – Present</p>
+          <ul>
+            <li>Developed automation tools using Python, JavaScript, and KNIME reducing manual work by 50%</li>
+            <li>Managed daily reports, tracked operational data, and streamlined supply chain logistics</li>
+            <li>Oversaw Shopify store operations, Shiprocket logistics, and order fulfillment</li>
+            <li>Optimized backend workflows and improved customer and vendor coordination</li>
+            <li>Leveraged AI tools like ChatGPT, Grok, and DeepSeek for task automation and data analysis</li>
+          </ul>
+        </div>
+        
+        <div class="timeline-item">
+          <h3>Vedibooks – Amazon.com Panel Manager</h3>
+          <p class="date">Feb 2023 – Feb 2025</p>
+          <ul>
+            <li>Managed end-to-end operations for Amazon USA, processing 300+ monthly orders.</li>
+            <li>Provided real-time chat-based support and resolved returns/refunds/claims.</li>
+            <li>Maintained product listings with accurate pricing and stock levels</li>
+            <li>Coordinated freelancers for marketing and content updates</li>
+            <li>Generated data reports and implemented process improvements based on insights</li>
+          </ul>
+        </div>
+        
+        <div class="timeline-item">
+          <h3>Suraksha Enterprises – E-commerce Manager</h3>
+          <p class="date">Jul 2021 – Jan 2023</p>
+          <ul>
+            <li>Delivered customer support via calls, emails, and chat</li>
+            <li>Processed 500+ monthly orders from Amazon, Flipkart, Meesho, Shopsy & Limeroad</li>
+            <li>Handled escalations and reduced resolution time by 30%.</li>
+            <li>Collaborated across departments to improve workflow efficiency</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="glass">
+      <h2><i class="fas fa-code"></i> Skills & Tools</h2>
+      <p>Technical and operational skills I've developed to drive efficiency and automation.</p>
+      
+      <div class="skills-grid">
+        <div class="skill-category glass">
+          <h4><i class="fas fa-shopping-cart"></i> E-commerce</h4>
+          <ul>
+            <li>Shopify Management</li>
+            <li>Amazon Seller Central</li>
+            <li>Flipkart & Meesho</li>
+            <li>Shiprocket Logistics</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category glass">
+          <h4><i class="fas fa-robot"></i> Automation</h4>
+          <ul>
+            <li>Python Scripting</li>
+            <li>JavaScript</li>
+            <li>Google Apps Script</li>
+            <li>KNIME Analytics</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category glass">
+          <h4><i class="fas fa-chart-line"></i> Data & Analysis</h4>
+          <ul>
+            <li>MIS Reporting</li>
+            <li>Advanced Excel</li>
+            <li>Google Sheets</li>
+            <li>Data Visualization</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category glass">
+          <h4><i class="fas fa-brain"></i> AI Tools</h4>
+          <ul>
+            <li>ChatGPT/GPT-4</li>
+            <li>Grok AI</li>
+            <li>DeepSeek</li>
+            <li>Prompt Engineering</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category glass">
+          <h4><i class="fas fa-laptop-code"></i> Web & Tech</h4>
+          <ul>
+            <li>WordPress</li>
+            <li>HTML/CSS</li>
+            <li>Webhooks</li>
+            <li>API Integrations</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category glass">
+          <h4><i class="fas fa-cogs"></i> Operations</h4>
+          <ul>
+            <li>Process Optimization</li>
+            <li>Supply Chain</li>
+            <li>Vendor Management</li>
+            <li>Customer Support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="glass">
+      <h2><i class="fas fa-envelope"></i> Let's Connect</h2>
+      <p>I'm always interested in hearing about new projects and opportunities.</p>
+      
+      <form id="contactForm" action="https://formsubmit.co/gauravyadav56788@gmail.com" method="POST" class="contact-form">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New contact from portfolio">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="#contact">
+        <input type="hidden" name="_autoresponse" value="Thank you for contacting me! I'll get back to you soon.">
+        
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+        </div>
+        
+        <div class="form-group full-width">
+          <button type="submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </div>
+      </form>
+      
+      <div id="successMessage" class="success-message">
+        <i class="fas fa-check-circle" style="color: var(--accent); font-size: 2rem; margin-bottom: 1rem;"></i>
+        <h3>Message Sent Successfully!</h3>
+        <p>Thank you for reaching out. I'll get back to you soon.</p>
+      </div>
+      
+      <div class="social-links">
+        <a href="mailto:gauravyadav56788@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+919971049503" title="Call"><i class="fas fa-phone"></i></a>
+        <a href="https://wa.me/919971049503" class="whatsapp" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/in/gauravyadav3000" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://drive.google.com/file/d/1qa6GuhIo7EfZQl3SFq3OvN_enmXM0qGq/view?usp=drivesdk" target="_blank" title="Resume"><i class="fas fa-file-alt"></i></a>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>© 2025 Gaurav Yadav | Designed with ♥ and code</p>
+    <p><small>Built with HTML, CSS, and JavaScript</small></p>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Typewriter effect
+    const typewriterText = [
+      "Automation Optimizer",
+      "E-commerce Specialist",
+      "Digital Platforms Manager",
+      "AI Solutions Integrator"
+    ];
+    
+    let currentText = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    
+    function typeWriter() {
+      const element = document.getElementById('typewriter');
+      const currentString = typewriterText[currentText];
+      
+      if (isDeleting) {
+        element.textContent = currentString.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 50;
+      } else {
+        element.textContent = currentString.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 100;
+      }
+      
+      if (!isDeleting && charIndex === currentString.length) {
+        isDeleting = true;
+        typingSpeed = 1500; // Pause at end of word
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        currentText = (currentText + 1) % typewriterText.length;
+        typingSpeed = 500; // Pause before typing next word
+      }
+      
+      setTimeout(typeWriter, typingSpeed);
+    }
+    
+    // Initialize typewriter effect
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(typeWriter, 1000);
+      
+      // Initialize particles.js
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#a5b4fc" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 150, color: "#a5b4fc", opacity: 0.3, width: 1 },
+          move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" }
+          }
+        }
+      });
+      
+      // Scroll behavior for navigation
+      const nav = document.getElementById('mainNav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+        
+        // Section visibility
+        document.querySelectorAll('section').forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          const scrollPosition = window.scrollY + window.innerHeight;
+          
+          if (scrollPosition > sectionTop + sectionHeight / 2) {
+            section.classList.add('visible');
+          }
+        });
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+      
+      // Active link highlighting
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      
+      window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          
+          if (window.scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const icon = themeToggle.querySelector('i');
+        if (document.body.classList.contains('light-mode')) {
+          icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+          icon.classList.replace('fa-sun', 'fa-moon');
+        }
+      });
+      
+      // Contact form submission
+      const contactForm = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Disable submit button to prevent multiple submissions
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        
+        // Get form data
+        const formData = new FormData(this);
+        
+        // Send form data using Fetch API
+        fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Show success message
+            successMessage.classList.add('show');
+            // Reset form
+            contactForm.reset();
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            // Reset button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+          } else {
+            throw new Error('Network response was not ok');
+          }
+        })
+        .catch(error => {
+          console.error('There was a problem with the form submission:', error);
+          alert('There was a problem submitting your form. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
