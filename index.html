@@ -173,9 +173,17 @@
       transform: none;
     }
     
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (min-width: 769px) {
+      section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+      }
+      
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     h2 {
@@ -443,7 +451,6 @@
       
       section {
         padding: 1.5rem;
-        transition: none !important;
       }
       
       .contact-form {
@@ -452,10 +459,6 @@
       
       .form-group.full-width {
         grid-column: span 1;
-      }
-      
-      .skills-grid {
-        grid-template-columns: 1fr 1fr;
       }
     }
     
@@ -830,16 +833,18 @@
           nav.classList.remove('scrolled');
         }
         
-        // Section visibility
-        document.querySelectorAll('section').forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          const scrollPosition = window.scrollY + window.innerHeight;
-          
-          if (scrollPosition > sectionTop + sectionHeight / 2) {
-            section.classList.add('visible');
-          }
-        });
+        // Section visibility - only for desktop
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('section').forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            const scrollPosition = window.scrollY + window.innerHeight;
+            
+            if (scrollPosition > sectionTop + sectionHeight / 2) {
+              section.classList.add('visible');
+            }
+          });
+        }
       });
       
       // Smooth scrolling for anchor links
