@@ -10,7 +10,7 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(135deg, #4f1161, #22216d);
+  background: linear-gradient(135deg, #f5f7fa, #e4e7eb);
   color: #1e293b;
   line-height: 1.6;
   overflow-x: hidden;
@@ -30,8 +30,8 @@ body {
   --text: #334155;
   --text-light: #64748b;
   --background: #4f1161;
-  --background-secondary: #f1f5f9;
-  --glass: rgba(255, 255, 255, 0.85);
+  --background-secondary: #1d337c;
+  --glass: rgba(89, 93, 210, 0.85);
   --glass-border: rgba(255, 255, 255, 0.3);
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
