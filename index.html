@@ -116,6 +116,12 @@
       padding: 0.75rem;
       z-index: 1000;
       transition: all 0.3s ease;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
     }
     
     nav.scrolled {
@@ -163,12 +169,13 @@
     
     section {
       padding: 2.5rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      opacity: 1;
+      transform: none;
     }
     
     section.visible {
       opacity: 1;
+      transform: translateY(0);
     }
     
     h2 {
@@ -436,6 +443,7 @@
       
       section {
         padding: 1.5rem;
+        transition: none !important;
       }
       
       .contact-form {
@@ -444,6 +452,10 @@
       
       .form-group.full-width {
         grid-column: span 1;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
     
