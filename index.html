@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gaurav Yadav | Tech-Driven Operations Specialist</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link id="lightModeCSS" rel="stylesheet" href="light-mode.css" disabled>
   <style>
     :root {
       --primary: #2563eb;
@@ -883,13 +884,17 @@
       
       // Theme toggle
       const themeToggle = document.getElementById('themeToggle');
+      const lightModeCSS = document.getElementById('lightModeCSS');
+      
       themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        const icon = themeToggle.querySelector('i');
-        if (document.body.classList.contains('light-mode')) {
-          icon.classList.replace('fa-moon', 'fa-sun');
+        if (lightModeCSS.disabled) {
+          // Switch to light mode
+          lightModeCSS.disabled = false;
+          themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
         } else {
-          icon.classList.replace('fa-sun', 'fa-moon');
+          // Switch to dark mode
+          lightModeCSS.disabled = true;
+          themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
         }
       });
       
